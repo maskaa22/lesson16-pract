@@ -15,5 +15,5 @@ let axiosInstatce = axios.create ({
     baseURL: 'https://jsonplaceholder.typicode.com/users'
 });
 const getUsers = () => axiosInstatce.get();
-const getUser = (id) => axiosInstatce.get(id);
+const getUser = (id) => axiosInstatce('/' + id);
 export {getUsers, getUser}
