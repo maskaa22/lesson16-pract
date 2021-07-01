@@ -2,9 +2,9 @@ export default function UserDeteils ({item})
 {
     return(
         <div>
-            {
-                item.username
-            }
+            {item.username}
+            {/*{itemDeteils.title}*/}
+
         </div>
     );
 }

@@ -7,7 +7,7 @@ import UserDeteils from "./components/user-deteils/UserDeteils";
 
 function App() {
   let [users, setUsers] = useState([]);
-  let [userDeteils, setUserDeteils] = useState(null)
+  let [userDeteils, setUserDeteils] = useState(null);
 
   useEffect(()=> {
     getUsers().then(respons => {
@@ -16,11 +16,12 @@ function App() {
     })
   } ,[])
 
-
   function  selectUser(id){
     console.log(id);
     getUser(id).then(({data}) => {
+      //console.log(data);
       setUserDeteils(data)
+
     });
   }
 
