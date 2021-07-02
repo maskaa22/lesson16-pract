@@ -1,16 +1,17 @@
 import {useEffect, useState} from "react";
 import {getPosts} from "../../serveses/API";
-// import UserDeteils from "../user-deteils/UserDeteils";
+import UserDeteils from "../user-deteils/UserDeteils";
+
 
 export default function User ({item, selectUser})
 {
 
-    let [post, setPost] = useState([]);
+    let [posts, setPosts] = useState([]);
     useEffect(()=> {
-        getPosts(item.id).then( value => {
-            //console.log(value.data);
-            setPost(value.data)
-        })
+        // getPosts(item.id).then( value => {
+        //     //console.log(value.data);
+        //     setPost(value.data)
+        // })
     })
 
     return(
@@ -19,18 +20,22 @@ export default function User ({item, selectUser})
             <button onClick={()=>{
                 selectUser(item.id);
                 {
-                    post.map(val => {
-                        if (item.id===val.userId)
-                            //<UserDeteils itemDeteils={val}/>
-                        {
-                            console.log(val);
-                        }
 
-                    })
+                    getPosts(item.id).then( value => {
+                        setPosts(value.data)
+                    });
+
                 }
             }}>click me</button>
+            {posts.map(val => {
+                    if (item.id===val.userId)
+                    {
+                        //
+                        return <div><hr/>{val.title}<hr/></div>
+                    }
+            })}
 
 
 
         </div>
-    );}
+    )}
