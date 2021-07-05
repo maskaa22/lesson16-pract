@@ -1,17 +1,12 @@
-// import User from "../user/User";
-// import Post from "../post/Post";
+import Post from "../post/Post";
 
 
-export default function Posts ()
+export default function Posts ({items})
 {
     return(
         <div>
             {
-                // items.map(post =>
-                //     //<User posts={posts}/>
-                //     <Post post={post} selectPost={selectPost}/>
-                // //console.log(posts.title)
-                // )
+                items.map(post => <Post key={post.id} item={post}/>)
             }
 
         </div>

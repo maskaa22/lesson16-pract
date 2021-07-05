@@ -1,40 +1,27 @@
 import {useEffect, useState} from "react";
-import {getPosts} from "../../serveses/API";
-import UserDeteils from "../user-deteils/UserDeteils";
+import {getPostsfUser} from "../../serveses/API";
+import Posts from "../posts/Posts";
+
 
 
 export default function User ({item, selectUser})
 {
 
     let [posts, setPosts] = useState([]);
-    useEffect(()=> {
-        // getPosts(item.id).then( value => {
-        //     //console.log(value.data);
-        //     setPost(value.data)
-        // })
-    })
+    const getPosts = ()=> {
+        getPostsfUser(item.id).then( value => {
+            setPosts(value.data);
+        });
+    };
 
     return(
         <div>
             {item.id} - {item.name} -
             <button onClick={()=>{
                 selectUser(item.id);
-                {
-
-                    getPosts(item.id).then( value => {
-                        setPosts(value.data)
-                    });
-
-                }
+                getPosts();
             }}>click me</button>
-            {posts.map(val => {
-                    if (item.id===val.userId)
-                    {
-                        //
-                        return <div><hr/>{val.title}<hr/></div>
-                    }
-            })}
-
+                <Posts items={posts}/>
 
 
         </div>

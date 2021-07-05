@@ -1,8 +1,8 @@
-export default function Post ()
+export default function Post ({item})
 {
     return(
         <div>
-            {/*{post.title}*/}
+            <hr/>{item.title}<hr/>
         </div>
     );
 }
